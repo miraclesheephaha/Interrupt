@@ -20,6 +20,6 @@ PIC Mode(8259 Mode) and IO APIC Mode
 4. ICW4：設定AEOI(自動結束中斷)，設定架構8086 intel架構
 
 *　第二階段：中斷請求與遮罩(Requesst & Mask)  
-5. Device例如鍵盤拉高電位，拉高IRQ1之類的
+5. Device例如鍵盤拉高電位，拉高IRQ1之類的  
 6. 
 
