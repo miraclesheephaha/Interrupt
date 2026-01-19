@@ -30,7 +30,7 @@ PIC Mode(8259 Mode) and IO APIC Mode
 9. 第一次INTA(凍結)，CPU回應第一個INTA訊號，8259收到後，立刻凍結IRR狀態，並在內部進行優先權判定，選出最高要求
    > 為何8259 MODE會需要凍結而IO APIC不用Acknowledge cycle?
    > 因為8259他是走實體線路，且只有一條通道可與cpu溝通，凍結的原因是怕電位不穩導致不準，8259內部的優先權判定是一套複雜的邏輯閘，如果IRQ3剛觸發，電路正在運算優先權突然IRQ1跳出，會導致電路的電位不穩  
-   > IO APIC是虛擬線路，假如4核心CPU會有4個local apic每個會有256個位元對應0~255 vector，os寫入IO APIC可存放多組IRQ設備需求，且優先權是由算法計算可在瞬間比較完成。  
+   > I/O APIC 提供虛擬線路，透過 RTE 定義路由規則。4核心CPU擁有4個 Local APIC，每個都有 256 位元的 IRR 用來存放來自設備的 IRQ 請求。中斷優先權由 OS 預先分配 Vector 數值，當多個中斷同時存在於 IRR 時，Local APIC 會瞬間完成優先權比較。  
 10. 第二次INTA取vector，CPU發出第二個INTA訊號，8259選出的中斷從IRR移到ISR，8259根據ICW2計算出正確的vector Byte，丟回數據匯流排讓CPU讀取
 
 * 第四階段：執行與結束(execution & EOI)
