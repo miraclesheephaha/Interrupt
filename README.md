@@ -32,5 +32,15 @@ PIC Mode(8259 Mode) and IO APIC Mode
    > 因為8259他是走實體線路，且只有一條通道可與cpu溝通，凍結的原因是怕電位不穩導致不準，8259內部的優先權判定是一套複雜的邏輯閘，如果IRQ3剛觸發，電路正在運算優先權突然IRQ1跳出，會導致電路的電位不穩  
    > IO APIC是虛擬線路，假如4核心CPU會有4個local apic每個會有256個位元對應0~255 vector，os寫入IO APIC的RTE可存放多組IRQ設備需求，且優先權是由算法計算可在瞬間比較完成。  
 10. 第二次INTA取vector，CPU發出第二個INTA訊號，8259選出的中斷從IRR移到ISR，8259根據ICW2計算出正確的vector Byte，丟回數據匯流排讓CPU讀取
-11.  
+
+* 第四階段：執行與結束(execution & EOI)
+11. 執行ISR：CPU跳轉到0X0? (對應的動作)
+12. 發送OCW2 (EOI)，中斷處理程式結束前，軟體發出OCW2指令到 port20h EOI通知8259清除ISR暫存器中的位元
+  > 用意：如果沒有OCW2，8259認定CPU還在忙進而擋住後面同等級或低等級的中斷
+OCW3：Mode切換
+  > 作用：切換read IRR/ISR register;設定特殊mask or poll模式
+
+# IO APIC模式
+
+  
 
