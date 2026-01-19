@@ -41,7 +41,7 @@ OCW3：Mode切換
   > 作用：切換read IRR/ISR register;設定特殊mask or poll模式
 
 ## IO APIC模式
-[外部設備] $\rightarrow$ [GPIO/PCIe/eSPI] $\rightarrow$ [實體 IRQ Line/Pin] $\rightarrow$ [I/O APIC (RTE 設定對應關係)] $\rightarrow$ [數位訊息帶有 Vector] $\rightarrow$ [Local APIC (存入 IRR 對應位元)] $\rightarrow$ [CPU 執行對應 Routine]
+[外部設備]>>[GPIO/PCIe/eSPI]>>[實體 IRQ Line/Pin]>>[I/O APIC (RTE 設定對應關係)]>>[數位訊息帶有 Vector]>>[Local APIC (存入 IRR 對應位元)]>>[CPU 執行對應 Routine]
 
   
 
