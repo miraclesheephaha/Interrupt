@@ -8,5 +8,6 @@
 # 為何需interrupt?  
 > 電腦周邊設備速度比cpu速度慢，如果讓cpu一直訪問device是否需處理(polling)，會沒效率，所以採取當設備有需要服務時，由設備端去通知cpu，cpu收到資訊後，中斷當前工作，處理設備需求，之後再回原先cpu的任務
 
-# interrupt
+# interrupt兩種模式  
+PIC Mode(8259 Mode) and IO APIC Mode
 
