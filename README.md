@@ -17,7 +17,7 @@ PIC Mode(8259 Mode) and IO APIC Mode
 1. ICW1：設定cascade模式或single模式
 2. ICW2：中斷vector對應，決定硬體中斷IRQ是多少?且每個IRQ有對應的vector，cpu會拿這些vector查詢需做那些對應動作。
 3. ICW3：告訴Master PIC IRQ2有接slave PIC
-4. ICW4：設定AEOI(自動結束中斷)，設定架構8086 intel架構
+4. ICW4：設定AEOI(自動結束中斷)，設定架構8086 intel架構  
 
 *　第二階段：中斷請求與遮罩(Requesst & Mask)  
 5. Device例如鍵盤拉高電位，拉高IRQ1之類的  
