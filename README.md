@@ -9,5 +9,16 @@
 > 電腦周邊設備速度比cpu速度慢，如果讓cpu一直訪問device是否需處理(polling)，會沒效率，所以採取當設備有需要服務時，由設備端去通知cpu，cpu收到資訊後，中斷當前工作，處理設備需求，之後再回原先cpu的任務
 
 # interrupt兩種模式  
-PIC Mode(8259 Mode) and IO APIC Mode
+PIC Mode(8259 Mode) and IO APIC Mode  
+
+## 8259 mode流程  
+1. 第一階段：初始化
+在device發送中斷前，OS需先讓8259知道如何運作，需透過ICW(Initialization Command Word)完成。
+* ICW1：設定cascade模式或single模式
+* ICW2：中斷vector對應，決定硬體中斷IRQ是多少?且每個IRQ有對應的vector，cpu會拿這些vector查詢需做那些對應動作。
+* ICW3：告訴Master PIC IRQ2有接slave PIC
+* ICW4：設定AEOI(自動結束中斷)，設定架構8086 intel架構
+
+2. 第二階段：中斷請求與遮罩(Requesst & Mask)
+* 
 
