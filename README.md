@@ -21,5 +21,8 @@ PIC Mode(8259 Mode) and IO APIC Mode
 
 *　第二階段：中斷請求與遮罩(Requesst & Mask)  
 5. Device例如鍵盤拉高電位，拉高IRQ1之類的  
-6. 
+6. OCW1 Mask檢查：8259檢查內部IMR(Interrupt Mask Register)。由OS透過OCW1事先設好，設0開啟IRQE中斷1為關閉  
+7. IRR紀錄：把要中斷的設備IRQ紀錄在IRR等待執行  
+
+* 第三階段：中斷承認週期(Acknowledge cycle)  
 
